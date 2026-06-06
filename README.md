@@ -123,6 +123,31 @@ print(ev.summary())
 print(ev.statistical_tests(baseline='sample'))  # Diebold-Mariano p-values
 ```
 
+## Results & Visualizations
+
+The walk-forward evaluation and parameter sensitivity analysis generate several visualizations (saved in the `figures/` directory):
+
+### 1. Bayesian Shrinkage & Prior Sensitivity
+Comparing the impact of the Normal-Wishart prior strength ($\kappa_0$) on the posterior mean returns and the resulting efficient frontiers.
+
+| Prior Mean Sensitivity | Frontier Sensitivity |
+| :---: | :---: |
+| ![Prior Mean Sensitivity](figures/01_prior_sensitivity_means.png) | ![Frontier Sensitivity](figures/03_prior_sensitivity_frontiers.png) |
+
+### 2. Black-Litterman Returns & View Confidence
+Visualizing the implied equilibrium returns $\Pi$ versus the Black-Litterman posterior returns $\mu_{BL}$ alongside sensitivity to view scaling.
+
+| Equilibrium vs. BL Returns | Confidence Sensitivity |
+| :---: | :---: |
+| ![Equilibrium vs. BL Returns](figures/04_bl_pi_vs_mbl.png) | ![Confidence Sensitivity](figures/05_bl_confidence_sensitivity.png) |
+
+### 3. Out-of-Sample Performance
+Backtesting the portfolios using a walk-forward framework, comparing sample covariance, Ledoit-Wolf, and Normal-Wishart estimators.
+
+| Frontier Comparison | Walk-Forward Wealth & Drawdown |
+| :---: | :---: |
+| ![Frontier Comparison](figures/08_frontier_comparison.png) | ![Walk-Forward Performance](figures/09_walkforward_wealth_drawdown.png) |
+
 ## Design Decisions
 
 - **No `np.linalg.inv`** — all linear systems solved via `np.linalg.solve`
